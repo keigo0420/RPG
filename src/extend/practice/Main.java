@@ -1,7 +1,6 @@
 package extend.practice;
 
 import java.util.*;
-import java.util.Random;
 
 public class Main {
 
@@ -12,7 +11,6 @@ public class Main {
 		Human h3 = new Fighter();
 
 		h1.name = "魔法使い";
-		;
 		h1.hp = 100;
 		h1.offensive = 50;
 		h2.name = "勇者";
@@ -36,81 +34,38 @@ public class Main {
 		m3.hp = 100;
 		m3.offensive = 50;
 
-		List<Human> list = new ArrayList<>(); // 人間リスト
-		list.add(h1);
-		list.add(h2);
-		list.add(h3);
+		List<Human> human = new ArrayList<>(); // 人間リスト
+		human.add(h1);
+		human.add(h2);
+		human.add(h3);
 
-		List<Monster> list2 = new ArrayList<>(); // モンスターリスト
-		list2.add(m1);
-		list2.add(m2);
-		list2.add(m3);
+		List<Monster> monster = new ArrayList<>(); // モンスターリスト
+		monster.add(m1);
+		monster.add(m2);
+		monster.add(m3);
 
 		while (true) {
-			Human h = list.get(Rand.get(list.size()));
-			Monster m = list2.get(Rand.get(list2.size()));
+			Human h = human.get(Rand.get(human.size()));
+			Monster m = monster.get(Rand.get(monster.size()));
 
 			h.attack(m);
 			if (m.hp <= 0) {
-				System.out.println(m.name+"は倒れた。");
-				list2.remove(m);
+				System.out.println(m.name + "は倒れた。");
+				monster.remove(m);
 			}
-			if (list2.isEmpty()) {
+			if (monster.isEmpty()) {
 				System.out.println("勇者たちは勝利した！");
 				break;
 			}
 			m.attack(h);
 			if (h.hp <= 0) {
-				System.out.println(h.name+"は倒れた。");
-				list.remove(h);
-			}if (list.isEmpty()) {
-				System.out.println("勇者たちは負けてしまった！");	
-					break;
+				System.out.println(h.name + "は倒れた。");
+				human.remove(h);
 			}
-
-			/*
-			 * m.attack(h);C
-			 * 
-			 * }
-			 * 
-			 * while(h1.hp+h2.hp+h3.hp>=0||m1.hp+m2.hp+m3.hp>=0) { //ターゲット乱数 int w=new
-			 * java.util.Random().nextInt(18);
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * if(w==1){h2.attack1(m1);} else if(w==2){h2.attack2(m2);} else
-			 * if(w==3){h2.attack3(m3);}
-			 * 
-			 * if(h2.hp<=0) {list.remove("勇者");} if(w==4){h2.attack1(m1);} else
-			 * if(w==5){h2.attack2(m2);} else if(w==6){h2.attack3(m3);}
-			 * 
-			 * 
-			 * if(h3.hp<=0) {list.remove("戦士");} else if(w==7){h3.attack1(m1);} else
-			 * if(w==8){h3.attack2(m2);} else if(w==9){h3.attack3(m3);}
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
-			 * else if(w==10){m1.attack4(h1);} else if(w==11){m1.attack5(h2);} else
-			 * if(w==12){m1.attack6(h3);}
-			 * 
-			 * if(m2.hp<=0) {list2.remove("スライム");} else if(w==13){m1.attack4(h1);} else
-			 * if(w==14){m2.attack5(h2);} else if(w==15){m2.attack6(h3);}
-			 * 
-			 * if(m3.hp<=0) {list2.remove("オーク");} else if(w==16){m3.attack4(h1);} else
-			 * if(w==17){m3.attack5(h2);} else if(w==18){m3.attack6(h3);}
-			 * 
-			 * 
-			 * 
-			 * }
-			 * 
-			 * 
-			 * /*if(h1.hp<=0&&h2.hp<=0&&h3.hp<=0) {System.out.println("魔物たちは勝利した！");}
-			 */
+			if (human.isEmpty()) {
+				System.out.println("勇者たちは負けてしまった！");
+				break;
+			}
 
 		}
 	}
